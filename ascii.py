@@ -10,6 +10,9 @@ def img_to_ascii(image_path, height, width):
     # Input image and parameters
     img = Image.open(image_path)
 
+    os.mkdir("middle")
+    os.mkdir("middle2")
+
     # Grayscale it
     gray_img = img.convert('L')
     gray_img.save("middle/gray.jpg")
@@ -117,6 +120,7 @@ def img_to_ascii(image_path, height, width):
                     shutil.rmtree(file_path) # Remove directory and contents
             except Exception as e:
                 print('Failed to delete %s. Reason: %s' % (file_path, e))
+        os.rmdir(folder)
 
     remove_images("middle")
     remove_images("middle2")
